@@ -1,3 +1,5 @@
+import { Argon2id } from "oslo/password";
+
 import { db } from "./db";
 import { users } from "./schema";
 
@@ -6,7 +8,7 @@ async function runSeed() {
     {
       email: "admin@gbo.com",
       username: "admingbo",
-      password: "gbo123",
+      password: await new Argon2id().hash("gbo123"),
       role: "admin",
     },
   ]);
