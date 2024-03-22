@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className={inter.className}>
+    <main className={`${inter.className} h-full`}>
       {children}
       <Toaster />
     </main>

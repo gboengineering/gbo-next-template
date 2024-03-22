@@ -13,5 +13,5 @@ export default async function AdminOverview() {
     return redirect("/admin/login");
   }
 
-  return <>test</>;
+  return <>asdasdasd</>;
 }
