@@ -6,9 +6,13 @@ import { Menu, Search, Bell } from "lucide-react";
 import UserMenu from "./UserMenu";
 import MobileSidebar from "./MobileSidebar";
 
+import type { User } from "lucia";
+
 export default function AdminHeader({
+  user,
   children,
 }: Readonly<{
+  user: User;
   children: React.ReactNode;
 }>) {
   const [sidebarOpen, setSidebarOpen] = React.useState(false);
@@ -67,7 +71,7 @@ export default function AdminHeader({
                 aria-hidden="true"
               />
 
-              <UserMenu />
+              <UserMenu user={user} />
             </div>
           </div>
         </div>

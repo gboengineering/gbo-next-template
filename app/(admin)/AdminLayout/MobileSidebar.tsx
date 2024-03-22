@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Dialog, Transition } from "@headlessui/react";
 import { X } from "lucide-react";
 
@@ -13,6 +14,8 @@ export default function MobileSidebar({
   sidebarOpen: boolean;
   setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
+  const pathname = usePathname();
+
   return (
     <Transition.Root show={sidebarOpen} as={React.Fragment}>
       <Dialog
@@ -82,7 +85,7 @@ export default function MobileSidebar({
                             <Link
                               href={item.href}
                               className={classNames(
-                                item.current
+                                item.href === pathname
                                   ? "bg-indigo-700 text-white"
                                   : "text-indigo-200 hover:text-white hover:bg-indigo-700",
                                 "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
@@ -90,7 +93,7 @@ export default function MobileSidebar({
                             >
                               <item.icon
                                 className={classNames(
-                                  item.current
+                                  item.href === pathname
                                     ? "text-white"
                                     : "text-indigo-200 group-hover:text-white",
                                   "h-6 w-6 shrink-0"
