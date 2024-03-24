@@ -9,9 +9,11 @@
     "lint": "next lint",
     "db:generate": "drizzle-kit generate:pg",
     "db:migrate": "tsx database/migrate.ts",
-    "db:seed": "tsx database/seed.ts"
+    "db:seed": "tsx database/seed.ts",
+    "seed:user": "tsx database/user.seed.ts"
   },
   "dependencies": {
+    "@faker-js/faker": "^8.4.1",
     "@headlessui/react": "^1.7.18",
     "@hookform/resolvers": "^3.3.4",
     "@lucia-auth/adapter-drizzle": "^1.0.7",

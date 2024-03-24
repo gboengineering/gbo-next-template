@@ -5,6 +5,7 @@ import {
   text,
   varchar,
   inet,
+  boolean,
 } from "drizzle-orm/pg-core";
 
 export const users = pgTable("users", {
@@ -15,6 +16,7 @@ export const users = pgTable("users", {
   password: text("password"),
   ipAddress: inet("ip_address"),
   source: varchar("source", { length: 20 }).default("website"),
+  active: boolean("active").default(true),
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
 });

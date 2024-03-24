@@ -1,5 +1,5 @@
 {
-  "id": "9c483d1a-c614-485d-acf4-eb7cdf2808ea",
+  "id": "a6bd6015-5eab-494f-b064-f8358ce44a7a",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
@@ -94,6 +94,13 @@
           "primaryKey": false,
           "notNull": false,
           "default": "'website'"
+        },
+        "active": {
+          "name": "active",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": true
         },
         "created_at": {
           "name": "created_at",

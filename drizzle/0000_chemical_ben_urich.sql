@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS "users" (
 	"password" text,
 	"ip_address" "inet",
 	"source" varchar(20) DEFAULT 'website',
+	"active" boolean DEFAULT true,
 	"created_at" timestamp DEFAULT now(),
 	"updated_at" timestamp DEFAULT now(),
 	CONSTRAINT "users_username_unique" UNIQUE("username"),
