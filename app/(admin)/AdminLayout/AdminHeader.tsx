@@ -23,6 +23,10 @@ export default function AdminHeader({
     setSidebarOpen(false);
   }, [pathname]);
 
+  if (pathname === "/admin/login") {
+    return <>{children}</>;
+  }
+
   return (
     <>
       <MobileSidebar

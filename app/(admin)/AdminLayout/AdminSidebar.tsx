@@ -1,8 +1,17 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import { AdminSidebarLink, AdminSidebarIcon } from "./AdminSidebarLink";
 
 import { navigation } from "./menu";
 
 export default function AdminSidebar() {
+  const pathname = usePathname();
+
+  if (pathname === "/admin/login") {
+    return <></>;
+  }
+
   return (
     <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
       <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-indigo-600 px-6 pb-4">
