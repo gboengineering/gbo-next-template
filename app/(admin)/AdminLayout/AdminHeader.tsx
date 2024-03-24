@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { usePathname } from "next/navigation";
 import { Menu, Search, Bell } from "lucide-react";
 
 import UserMenu from "./UserMenu";
@@ -15,7 +16,12 @@ export default function AdminHeader({
   user: User;
   children: React.ReactNode;
 }>) {
+  const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    setSidebarOpen(false);
+  }, [pathname]);
 
   return (
     <>

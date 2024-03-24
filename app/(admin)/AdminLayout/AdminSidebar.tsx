@@ -1,12 +1,11 @@
 import Link from "next/link";
-import { headers } from "next/headers";
+
+import { AdminSidebarLink, AdminSidebarIcon } from "./AdminSidebarLink";
 
 import { classNames } from "@/lib/utils";
 import { navigation } from "./menu";
 
 export default function AdminSidebar() {
-  const pathname = headers().get("x-pathname");
-
   return (
     <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
       <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-indigo-600 px-6 pb-4">
@@ -22,26 +21,10 @@ export default function AdminSidebar() {
           <ul role="list" className="-mx-2 space-y-1">
             {navigation.map((item) => (
               <li key={item.name}>
-                <Link
-                  href={item.href}
-                  className={classNames(
-                    item.href === pathname
-                      ? "bg-indigo-700 text-white"
-                      : "text-indigo-200 hover:text-white hover:bg-indigo-700",
-                    "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-                  )}
-                >
-                  <item.icon
-                    className={classNames(
-                      item.href === pathname
-                        ? "text-white"
-                        : "text-indigo-200 group-hover:text-white",
-                      "h-6 w-6 shrink-0"
-                    )}
-                    aria-hidden="true"
-                  />
+                <AdminSidebarLink href={item.href}>
+                  <AdminSidebarIcon href={item.href} icon={<item.icon />} />
                   {item.name}
-                </Link>
+                </AdminSidebarLink>
               </li>
             ))}
           </ul>
