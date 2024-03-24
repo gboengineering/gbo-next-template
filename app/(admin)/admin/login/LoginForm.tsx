@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -32,7 +31,6 @@ export const loginSchema = z.object({
 
 export default function LoginForm() {
   const [isLoading, setIsLoading] = React.useState(false);
-  const router = useRouter();
   const { toast } = useToast();
 
   const form = useForm<z.infer<typeof loginSchema>>({
@@ -59,7 +57,7 @@ export default function LoginForm() {
       title: "Login success",
       description: "You are now authenticated",
     });
-    router.push("/admin/overview");
+    window.location.href = "/admin/overview";
   }
 
   return (

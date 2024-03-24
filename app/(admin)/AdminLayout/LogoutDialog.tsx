@@ -8,14 +8,16 @@ import {
   DialogClose,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import logout from "./actions/logout";
 
 export default function LogoutDialog({
   setDialogOpen,
 }: {
   setDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
-  function handleLogout() {
-    console.log("logout");
+  async function handleLogout() {
+    await logout();
+    window.location.reload();
   }
 
   return (
@@ -33,7 +35,9 @@ export default function LogoutDialog({
               Close
             </Button>
           </DialogClose>
-          <Button onClick={handleLogout}>Yes, Logout</Button>
+          <form action={handleLogout}>
+            <Button>Yes, Logout</Button>
+          </form>
         </DialogFooter>
       </DialogContent>
     </Dialog>
