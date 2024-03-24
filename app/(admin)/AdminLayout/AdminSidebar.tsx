@@ -1,8 +1,5 @@
-import Link from "next/link";
-
 import { AdminSidebarLink, AdminSidebarIcon } from "./AdminSidebarLink";
 
-import { classNames } from "@/lib/utils";
 import { navigation } from "./menu";
 
 export default function AdminSidebar() {
