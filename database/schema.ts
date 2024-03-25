@@ -7,6 +7,7 @@ import {
   inet,
   boolean,
 } from "drizzle-orm/pg-core";
+import type { InferSelectModel } from "drizzle-orm";
 
 export const users = pgTable("users", {
   id: uuid("id").defaultRandom().primaryKey(),
@@ -17,9 +18,11 @@ export const users = pgTable("users", {
   ipAddress: inet("ip_address"),
   source: varchar("source", { length: 20 }).default("website"),
   active: boolean("active").default(true),
-  createdAt: timestamp("created_at").defaultNow(),
-  updatedAt: timestamp("updated_at").defaultNow(),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow(),
 });
+
+export type User = InferSelectModel<typeof users>;
 
 export const sessions = pgTable("session", {
   id: text("id").primaryKey(),

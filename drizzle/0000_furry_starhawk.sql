@@ -13,8 +13,8 @@ CREATE TABLE IF NOT EXISTS "users" (
 	"ip_address" "inet",
 	"source" varchar(20) DEFAULT 'website',
 	"active" boolean DEFAULT true,
-	"created_at" timestamp DEFAULT now(),
-	"updated_at" timestamp DEFAULT now(),
+	"created_at" timestamp with time zone DEFAULT now(),
+	"updated_at" timestamp with time zone DEFAULT now(),
 	CONSTRAINT "users_username_unique" UNIQUE("username"),
 	CONSTRAINT "users_email_unique" UNIQUE("email")
 );
