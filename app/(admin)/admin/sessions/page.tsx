@@ -26,6 +26,7 @@ export async function getSessionData() {
     })
     .from(sessions)
     .leftJoin(users, eq(sessions.userId, users.id));
+
   return sessionData;
 }
 
