@@ -1,4 +1,6 @@
 import { count, ilike } from "drizzle-orm";
+import { redirect } from "next/navigation";
+import { validateRequest } from "@/lib/auth";
 
 import { db } from "@/database";
 import { users } from "@/database/schema";
@@ -8,6 +10,12 @@ import UserTable from "./UserTable";
 import TablePagination from "./TablePagination";
 import TableSelectLimit from "./TableSelectLimit";
 import UserSearch from "./UserSearch";
+
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Admin Users",
+};
 
 export async function getPaginatedUser({
   page,
@@ -67,6 +75,11 @@ export default async function UsersPage({
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
+  const { user } = await validateRequest();
+  if (user?.role !== "admin") {
+    return redirect("/admin/login");
+  }
+
   const page = (searchParams.page || "1") as string;
   const size = (searchParams.size || "10") as string;
   const q = (searchParams.q || "") as string;
